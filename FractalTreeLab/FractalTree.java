@@ -47,7 +47,7 @@ public class FractalTree extends JPanel
          page.drawLine (x1, y1, newX2 , newY);
          a= (a * 0.8 );
          
-         if (a > 0.005)
+         if (a > 20)
          {
              drawFractal (newX , newY , a , b ,  page);
              drawFractal (newX2 , newY , a , b ,  page);
@@ -63,7 +63,8 @@ public class FractalTree extends JPanel
    {
       super.paintComponent (page);
       page.setColor (Color.green);
-      drawFractal ( 600,  800,  100.0, 20.0  , page);
+      drawFractal ( 500,  700,  200.0, 15.0  , page);
+      page.drawLine (500,850, 500, 700);
    }
 
    //-----------------------------------------------------------------
