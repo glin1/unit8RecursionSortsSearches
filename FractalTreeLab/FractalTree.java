@@ -36,19 +36,23 @@ public class FractalTree extends JPanel
    //  intermediate points are computed, and each line segment is
    //  drawn as a fractal.
    //-----------------------------------------------------------------
-   public void drawFractal (int x1, int y1, int branchLength, int currentAngle, Graphics page)
+   public void drawFractal (int x1, int y1, double branchLength, double currentAngle, Graphics page)
    {
-         int a = branchLength;
-         int b = currentAngle;
+         double a = branchLength;
+         double b = currentAngle;
          int newY= (int)(y1+branchLength*Math.cos(currentAngle)*0.8);
          int newX= (int)(x1+branchLength*Math.sin(currentAngle)*0.8);
          int newX2=(int)(x1-branchLength*Math.sin(currentAngle)*0.8);
          page.drawLine (x1, y1, newX, newY);
          page.drawLine (x1, y1, newX2 , newY);
-         a=(int) (a/1.2);
-         b=(int)(b-3);
-         drawFractal (newX , newY , a , b ,  page);
-         drawFractal (newX2 , newY , a , b ,  page);
+         a= (a * 0.8 );
+         
+         if (a > 0.005)
+         {
+             drawFractal (newX , newY , a , b ,  page);
+             drawFractal (newX2 , newY , a , b ,  page);
+             
+         }
          
    }
 
@@ -59,7 +63,7 @@ public class FractalTree extends JPanel
    {
       super.paintComponent (page);
       page.setColor (Color.green);
-      drawFractal ( 600,  1000,  100, 20  , page);
+      drawFractal ( 600,  800,  100.0, 20.0  , page);
    }
 
    //-----------------------------------------------------------------
